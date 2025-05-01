@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 118  -->
+  <question type="coderunner">
+    <name>
+      <text>PROTOTYPE_RACKET_FUNCTION_via_python</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>A question type designed to compile and run a student-provided Racket function, scripted using Python3.</p>
+<p>The student's answer is expected to contain at least one Racket function definition that can be appended to an existing Racket file. This file must be manually uploaded as a Support File when defining a question, and the python template expects it to be named "prog.rkt" by default.<br>This question type does not support standard input and evaluates the correctness of the student's answer by displaying the returned value of a function call from within the racket executable. Care should be taken if the student is required to print intermediate results as part of a question, as any call of the built-in "display" or "displayln" function could in theory invalidate an answer that would otherwise be considered correct. These calls should be made based on future recursive answers rather than the result of the current function call to guarantee a consistent, readable output. For example:</p>
+<p style="padding-left: 40px;">(define (recursion a)</p>
+<p style="padding-left: 80px;">(displayln (recursion (- a 1)))</p>
+<p style="padding-left: 80px;">a</p>
+<p style="padding-left: 40px;">)</p>
+<p>This structure would print the answers from all recursive steps from within the desired function, while allowing the python template to display the final result without duplication.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>racket_function</coderunnertype>
+    <prototypetype>2</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>10, 20, ...</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>1</showsource>
+    <answerboxlines>18</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra></globalextra>
+    <useace>1</useace>
+    <resultcolumns></resultcolumns>
+    <template><![CDATA[import os
+import subprocess, sys
+
+student_answer = """{{ STUDENT_ANSWER | e('py') }}"""
+
+status = subprocess.call('cp prog.rkt exec.rkt', shell=True)
+
+with open("exec.rkt", "a") as src:
+    print("\n", file=src)
+    print(student_answer, file=src)
+{% for TEST in TESTCASES %}
+    print("(display {{TEST.testcode}} )", file=src)
+    print("( display \"\\n\" )", file=src);
+{% if not loop.last %}
+    # Append display code??
+    print("( display \"#<ab@17943918#@>#\" )", file=src); 
+    print("( display \"\\n\" )", file=src);
+{% endif %}
+{% endfor %}
+
+subprocess.call('racket exec.rkt', text=True, stdout=sys.stdout, stderr=sys.stderr, shell=True)
+]]></template>
+    <iscombinatortemplate>1</iscombinatortemplate>
+    <allowmultiplestdins>0</allowmultiplestdins>
+    <answer></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre><![CDATA[|#<ab@17943918#@>#\n|ms]]></testsplitterre>
+    <language>python3</language>
+    <acelang>Racket</acelang>
+    <sandbox></sandbox>
+    <grader>EqualityGrader</grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin>ace</uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+    </testcases>
+  </question>
+
+</quiz>

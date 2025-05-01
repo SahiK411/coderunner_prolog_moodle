@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 129  -->
+  <question type="coderunner">
+    <name>
+      <text>Arbol Binario</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>El desarrollador lider para una aplicacion de prolog necesita retirarse del proyecto debido a un caso severo de Gripe. Para continuar con el proceso de desarrollo, se espera que ayudes a desarrollar una funcionalidad de busqueda sobre arboles binarios de busqueda. La estructura ya se habia establecido anteriormente mediante dos reglas:<br>- insertar_nodo([A, B, C], D, E)<br>- insertar_nodo([], A, [[], A, []])<br>Utilizando estas reglas, crear las siguientes funcionalidades:<br>- crear_arbol(A, R), regla que transforme una lista desordenada a un arbol binario de busqueda<br>- buscar(A, B), regla que obtiene un arbol binario de busqueda e imprime "Existe" si encuentra el elemento indicado o "No Existe" si no lo encuentra.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>prolog_io_predicate</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>10, 20, ...</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>18</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>crear_arbol([1, 2, 4, 3, 5, 6, 10, 7], R), writeln(R)</text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text>[[[[[[[],1,[]],2,[]],3,[[],4,[]]],5,[]],6,[]],7,[[],10,[]]]</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>crear_arbol([200, 150, 50, 100, 250], R), writeln(R)</text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text>[[[[],50,[]],100,[[],150,[[],200,[]]]],250,[]]</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>crear_arbol([1, 2, 4, 3, 5, 6, 10, 7], R), buscar(R, 2)</text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text>Existe</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>crear_arbol([1, 2, 4, 3, 5, 6, 10, 7], R), buscar(R, 99)</text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text>No Existe</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+<file name="kb.pl" path="/" encoding="base64">aW5zZXJ0YXJfbm9kbyhbXSxFLFtbXSwgRSwgW11dKTotDQogICAgIS4NCg0KaW5zZXJ0YXJfbm9kbyhbQSwgQiwgQ10sIEUsIEYpOi0NCiAgICA8KEUsQiksDQogICAgaW5zZXJ0YXJfbm9kbyhBLCBFLCBUKSwNCiAgICA9KEYsIFtULCBCLCBDXSksDQogICAgIS4NCg0KaW5zZXJ0YXJfbm9kbyhbQSwgQiwgQ10sIEUsIEYpOi0NCiAgICA+PShFLEIpLA0KICAgIGluc2VydGFyX25vZG8oQywgRSwgVCksDQogICAgPShGLCBbQSwgQiwgVF0pLA0KICAgICEuDQoNCg==</file>
+    </testcases>
+  </question>
+
+</quiz>

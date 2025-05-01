@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 122  -->
+  <question type="coderunner">
+    <name>
+      <text>PROTOTYPE_PROLOG_PRED_via_python</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>A question type designed to run a student-provided prolog predicate, scripted using Python3 with the SWI-Prolog specification in mind.</p>
+<p>The student's answer is expected to contain at least one prolog predicate definition that can be appended to an existing knowledge base. This knowledge base must be manually uploaded as a Support File when defining a question, and the python template expects it to be named "kb.pl" by default. This question type does not support standard input or output from within the execution of the prolog instance. </p>
+<p>The output produced by any test query consists of a python dictionary containing the Truth Value for the query, as well as any variable values that result in a 'true' verdict. This question type will continuously print all results for a query that result in a Truth Value of 'true' for a given test, and care should be taken to ensure that the expected output matches this format exactly in order to ensure the validity of the student's code. This output can be retrieved by running the expected predicate through the Janus_SWI module in python, or by choosing to preview the question and obtaining the result as it would be shown to the students. </p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>prolog_predicate</coderunnertype>
+    <prototypetype>2</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>10, 20, ...</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>1</showsource>
+    <answerboxlines>18</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra></globalextra>
+    <useace>1</useace>
+    <resultcolumns></resultcolumns>
+    <template><![CDATA[import subprocess, sys
+import janus_swi as janus
+
+student_answer = """{{ STUDENT_ANSWER | e('py') }}"""
+
+status = subprocess.call('cp kb.pl prog.pl', shell=True) 
+
+if status != 0:
+    print("** Compilation failed. Testing aborted **", file=sys.stderr)
+
+with open("prog.pl", "a") as src:
+    print("\n", file=src)
+    print(student_answer, file=src)
+
+janus.consult("prog.pl")
+
+{% for TEST in TESTCASES %}
+for d in janus.query("{{TEST.testcode}}", {}):
+    print(d)
+{% if not loop.last %}
+print("#<ab@17943918#@>#")
+{% endif %}
+{% endfor %}
+]]></template>
+    <iscombinatortemplate>1</iscombinatortemplate>
+    <allowmultiplestdins>0</allowmultiplestdins>
+    <answer></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre><![CDATA[|#<ab@17943918#@>#\n|ms]]></testsplitterre>
+    <language>python3</language>
+    <acelang>prolog</acelang>
+    <sandbox></sandbox>
+    <grader>EqualityGrader</grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin>ace</uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+    </testcases>
+    <tags>
+      <tag><text>Dev</text>
+</tag>
+    </tags>
+  </question>
+
+</quiz>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 134  -->
+  <question type="coderunner">
+    <name>
+      <text>Family Tree</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Write a predicate sibling/2 which determines its truth value from the following relations:</p>
+<ul>
+<li>mother(X, Y).</li>
+<li>father(Z, Y).</li>
+</ul>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>prolog_predicate</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>10, 20, ...</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>18</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>sibling(X, samantha)</text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text>{'truth': True, 'X': 'carlos'}</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>sibling(X, alexander)</text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text></text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>sibling(christian, kyle)</text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text>{'truth': True}</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+<file name="kb.pl" path="/" encoding="base64">JW1vdGhlci8yDQptb3RoZXIobWFyeSwgY2FybG9zKS4NCm1vdGhlcihtYXJ5LCBzYW1hbnRoYSkuDQptb3RoZXIoc2FtYW50aGEsIGNocmlzdGlhbikuDQptb3RoZXIoYWRhLCBuYXRhc2hhKS4NCm1vdGhlcihzYW1hbnRoYSwga3lsZSkuDQoNCiVmYXRoZXIvMg0KZmF0aGVyKGRpZWdvLCBjYXJsb3MpLg0KZmF0aGVyKGRpZWdvLCBzYW1hbnRoYSkuDQpmYXRoZXIoYWxleGFuZGVyLCBjaHJpc3RpYW4pLg0KZmF0aGVyKGNhcmxvcywgbmF0YXNoYSkuDQpmYXRoZXIoYWxleGFuZGVyLCBreWxlKS4NCg0KJXNpYmxpbmcvMg0KJXNpYmxpbmcoWCxZKTotDQolICAgIGZhdGhlcihGLFgpLA0KJSAgICBmYXRoZXIoRixZKSwNCiUgICAgbW90aGVyKE0sWCksDQolICAgIG1vdGhlcihNLFkpLg0KDQolY291c2luLzINCmNvdXNpbihYLFkpOi0NCiAgICAoIGZhdGhlcihVLFgpIDsgbW90aGVyKFUsIFgpICksDQogICAgKCBmYXRoZXIoVixZKSA7IG1vdGhlcihWLFkpICApLA0KICAgIHNpYmxpbmcoVSxWKSwNCiAgICAhLg0KDQolZ3JhbmRwYXJlbnQvMg0KZ3JhbmRwYXJlbnQoWCxZKTotDQogICAgKCBmYXRoZXIoVSxZKSA7IG1vdGhlcihVLFkpICksDQogICAgKCBmYXRoZXIoWCxVKSA7IG1vdGhlcihYLFUpICksDQogICAgIS4NCg0KDQoNCg0KDQoNCg0KDQo=</file>
+    </testcases>
+  </question>
+
+</quiz>
