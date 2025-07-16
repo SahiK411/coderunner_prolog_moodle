@@ -46,7 +46,6 @@ with open("prog.rkt", "a") as src:
     print("(display {{TEST.testcode}} )", file=src)
     print("( display \"\\n\" )", file=src);
 {% if not loop.last %}
-    # Append display code??
     print("( display \"#<ab@17943918#@>#\" )", file=src); 
     print("( display \"\\n\" )", file=src);
 {% endif %}
